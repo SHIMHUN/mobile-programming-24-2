@@ -41,7 +41,6 @@
                 android:inputType="textMultiLine"
                 android:padding="8dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <!-- 날짜 및 시간 선택 -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,6 +83,39 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_marginBottom="24dp" />
+
+        <!-- 중요도 선택 -->
+        <RadioGroup
+            android:id="@+id/radio_group_priority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:gravity="center">
+
+            <!-- 상 -->
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_high"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상" />
+
+            <!-- 중 -->
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:text="중" />
+
+            <!-- 하 -->
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_low"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:text="하" />
+        </RadioGroup>
 
         <!-- 저장 버튼 -->
         <com.google.android.material.button.MaterialButton
