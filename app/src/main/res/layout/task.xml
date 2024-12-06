@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -7,36 +9,92 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <!-- 제목 입력 -->
-        <EditText
-            android:id="@+id/edit_task_title"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="할 일 제목"
-            android:inputType="text"
-            android:textSize="18sp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="16dp"
+            android:hint="Title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_task_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- 설명 입력 -->
-        <EditText
-            android:id="@+id/edit_task_description"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="할 일 설명"
-            android:inputType="textMultiLine"
-            android:gravity="top"
-            android:lines="5"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:hint="ToDo!">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_task_description"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:padding="8dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 날짜 및 시간 선택 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <!-- 날짜 선택 버튼 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_task_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="날짜 선택"
+                app:cornerRadius="16dp"
+                android:backgroundTint="@color/purple_500"
+                android:textColor="@android:color/white" />
+
+            <!-- 시간 선택 버튼 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_task_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="시간 선택"
+                app:cornerRadius="16dp"
+                android:backgroundTint="@color/purple_500"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- 선택된 날짜와 시간 표시 -->
+        <TextView
+            android:id="@+id/tv_selected_date_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="____Y__M__D __:__"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
 
         <!-- 저장 버튼 -->
-        <Button
-            android:id="@+id/button_save"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_task"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="저장"
-            android:backgroundTint="?attr/colorPrimary"
-            android:textColor="@android:color/white" />
+            android:textAllCaps="false"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@android:color/white"
+            app:cornerRadius="24dp"
+            android:layout_marginBottom="16dp" />
     </LinearLayout>
 </ScrollView>
