@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/taskFragment">
+
+    <!-- TaskFragment 등록 -->
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.example.todolist.fragment.TaskFragment"
+        android:label="Task"
+        tools:layout="@layout/task" >
+        <!-- TaskDetailFragment로 이동 -->
+        <action
+            android:id="@+id/action_taskFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment" />
+    </fragment>
+
+    <!-- TaskDetailFragment 등록 -->
+    <fragment
+        android:id="@+id/taskDetailFragment"
+        android:name="com.example.todolist.fragment.TaskDetailFragment"
+        android:label="Task Detail"
+        tools:layout="@layout/taskdetail">
+        <!-- TaskFragment로 돌아가는 액션 -->
+        <action
+            android:id="@+id/action_taskDetailFragment_to_taskFragment"
+            app:destination="@id/taskFragment" />
+    </fragment>
+</navigation>
