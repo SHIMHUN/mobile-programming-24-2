@@ -1,4 +1,4 @@
-package com.example.todolist.fragment
+package com.example.todolist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.todolist.R
 
 class TaskDetailFragment : Fragment() {
 

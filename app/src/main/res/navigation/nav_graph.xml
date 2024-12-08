@@ -8,7 +8,7 @@
     <!-- TaskFragment 등록 -->
     <fragment
         android:id="@+id/taskFragment"
-        android:name="com.example.todolist.fragment.TaskFragment"
+        android:name="com.example.todolist.TaskFragment"
         android:label="Task"
         tools:layout="@layout/task" >
         <!-- TaskDetailFragment로 이동 -->
@@ -20,7 +20,7 @@
     <!-- TaskDetailFragment 등록 -->
     <fragment
         android:id="@+id/taskDetailFragment"
-        android:name="com.example.todolist.fragment.TaskDetailFragment"
+        android:name="com.example.todolist.TaskDetailFragment"
         android:label="Task Detail"
         tools:layout="@layout/taskdetail">
         <!-- TaskFragment로 돌아가는 액션 -->

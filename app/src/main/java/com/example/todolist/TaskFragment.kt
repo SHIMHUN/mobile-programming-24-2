@@ -1,4 +1,4 @@
-package com.example.todolist.fragment
+package com.example.todolist
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -12,7 +12,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.todolist.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
