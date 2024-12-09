@@ -1,13 +1,12 @@
-package com.example.todolist
+package com.example.todolist.data.db
 
 import android.content.Context
 import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.todolist.TodoInfo
 
-@Database(entities = [TodoInfo::class], version = 1, exportSchema = false)
+@Database(entities = [TodoInfo::class], version = 2, exportSchema = false)
 abstract class TodoDatabase : RoomDatabase() {
     abstract fun todoDao(): TodoDao
     companion object {
