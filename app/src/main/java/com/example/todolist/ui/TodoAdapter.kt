@@ -3,7 +3,6 @@ package com.example.todolist.ui
 import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -37,11 +36,7 @@ class TodoAdapter(private val navigationListener: AdapterListener) :
                     .setMessage("정말 삭제하시겠습니까?")
                     .setPositiveButton("네", { _, _ ->
                         CoroutineScope(Dispatchers.Main).launch {
-                            if (navigationListener.requestToDeleteItem(todoItem)) {
-                                Toast.makeText(binding.root.context, "삭제됐습니다", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(binding.root.context, "오류입니다", Toast.LENGTH_SHORT).show()
-                            }
+                            navigationListener.requestToDeleteItem(todoItem)
                         }
                     })
                     .setNegativeButton("아니오") { dialog, _ -> dialog.dismiss() }

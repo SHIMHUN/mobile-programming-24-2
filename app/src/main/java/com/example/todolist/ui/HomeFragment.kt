@@ -48,7 +48,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), 
     }
 
     override suspend fun requestToDeleteItem(item: TodoInfo): Boolean {
-        return viewModel.deleteTodoData(item)
+        val isSucceed = viewModel.deleteTodoData(item)
+        if(isSucceed) { Toast.makeText(requireActivity(), "삭제됐습니다", Toast.LENGTH_SHORT).show() }
+        else { Toast.makeText(binding.root.context, "오류입니다", Toast.LENGTH_SHORT).show() }
+        return isSucceed
     }
 }
 
