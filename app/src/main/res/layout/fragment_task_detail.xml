@@ -4,9 +4,20 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="todoInfo"
             type="com.example.todolist.data.db.TodoInfo" />
+
+        <variable
+            name="oldTodoInfo"
+            type="com.example.todolist.data.db.TodoInfo" />
+
+        <variable
+            name="isClickedPriorityText"
+            type="Boolean" />
+
     </data>
 
     <ScrollView
@@ -31,10 +42,11 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etv_task_detail_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{todoInfo.component2()}"
+                android:text="@{oldTodoInfo.component2()}"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -51,12 +63,12 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_task_detail_description"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etv_task_detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{todoInfo.component3()}"
+                android:text="@{oldTodoInfo.component3()}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:text="Sample Task Description" />
@@ -72,11 +84,13 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_task_detail_date"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etv_task_detail_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:cursorVisible="false"
+                android:focusable="false"
                 android:text="@{todoInfo.component4()}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -93,11 +107,13 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_task_detail_time"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etv_task_detail_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:cursorVisible="false"
+                android:focusable="false"
                 android:text="@{todoInfo.component5()}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -114,15 +130,50 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_task_detail_priority"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etv_task_detail_priority"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:cursorVisible="false"
+                android:focusable="false"
                 android:text="@{todoInfo.getPriorityString(todoInfo.component6())}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:text="Medium" />
+
+            <RadioGroup
+                android:id="@+id/rg_priority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="@{isClickedPriorityText ? View.VISIBLE : View.GONE }">
+
+                <!-- 상 -->
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상" />
+
+                <!-- 중 -->
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:text="중" />
+
+                <!-- 하 -->
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:text="하" />
+            </RadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -136,7 +187,16 @@
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/purple_500"
-                    android:text="취소"
+                    android:text="홈으로"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/btn_init_task"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/purple_500"
+                    android:text="초기화"
                     android:textColor="@android:color/white" />
 
                 <!-- 수정 버튼 -->

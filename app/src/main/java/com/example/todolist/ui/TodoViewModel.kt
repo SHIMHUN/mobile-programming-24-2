@@ -37,11 +37,10 @@ class TodoViewModel(private val repository: Repository) : ViewModel() {
     }
 
     suspend fun deleteTodoData(todoInfo: TodoInfo): Boolean {
-        return if(viewModelScope.async { repository.deleteTodo(todoInfo) }.await()) {
+        return if (viewModelScope.async { repository.deleteTodo(todoInfo) }.await()) {
             requestTodoList()
             true
-        }
-        else {
+        } else {
             false
         }
     }
@@ -69,7 +68,50 @@ class TodoViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
+    suspend fun updateTodoData(
+        title: String,
+        description: String,
+        date: String,
+        time: String,
+        priority: String,
+        oldItem: TodoInfo
+    ): Boolean {
+        return viewModelScope.async {
+            val newItem = oldItem.copy(
+                title = title,
+                description = description,
+                date = date,
+                time = time,
+                priority = getPriorityInt(priority)
+            )
+            if (oldItem == newItem) true
+            else if (checkTodoInfo(newItem)) {
+                repository.updateTodo(newItem)
+            } else {
+                false
+            }
+        }.await()
+    }
+
     fun getSelectedTodoInfo(id: Int): TodoInfo? {
-        return _todoList.value?.let { it.find { info -> info.id == id } }
+        return _todoList.value?.let {
+            it.find { info -> info.id == id }?.also { todoInfo -> _selectedTodoInfo.value = todoInfo }
+        }
+    }
+
+    fun updateDateOfSelectedTodoInfo(newDate: String) {
+        _selectedTodoInfo.value?.let { _selectedTodoInfo.value = it.copy(date = newDate) }
+    }
+
+    fun updateTimeOfSelectedTodoInfo(newTime: String) {
+        _selectedTodoInfo.value?.let { _selectedTodoInfo.value = it.copy(time = newTime) }
+    }
+
+    fun updatePriorityOfSelectedTodoInfo(newPriority: String) {
+        _selectedTodoInfo.value?.let { _selectedTodoInfo.value = it.copy(priority = getPriorityInt(newPriority)) }
+    }
+
+    fun initSelectedTodoInfo(oldItem: TodoInfo) {
+        _selectedTodoInfo.value = oldItem
     }
 }
