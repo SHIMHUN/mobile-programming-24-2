@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.lifecycle.lifecycleScope
 import com.example.todolist.R
 import com.example.todolist.data.db.TodoInfo
 import com.example.todolist.databinding.FragmentHomeBinding
@@ -12,7 +11,6 @@ import com.example.todolist.ui.common.AdapterListener
 import com.example.todolist.ui.common.BaseFragment
 import com.example.todolist.ui.common.NavigationUtil.navigate
 import com.example.todolist.ui.common.NavigationUtil.navigateWithArgs
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), AdapterListener {
